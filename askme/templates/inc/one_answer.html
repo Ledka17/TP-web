@@ -1,0 +1,36 @@
+{% load static %}
+<li class="media my-4">
+    <span class="border border-primary p-2 col-12">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                    <!-- Аватар вопроса -->
+                    <div class="row mb-2">
+                        <img class="mx-auto mr-3" src="{% static 'images/media2.png' %}" height=86px>
+                    </div>
+
+                    <!-- Кнопки лайков/дизлайков -->
+                    <div class="row mb-3">
+                        <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+                            <span class="border border-secondary rounded-left">&nbsp;&nbsp;{{ answer.rating }}&nbsp;&nbsp;</span>
+                            <button type="button" class="btn btn-secondary btn-sm">&#8593;</button>
+                            <button type="button" class="btn btn-secondary btn-sm">&#8595;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-10">
+                    <div class="media-body">
+                        <!-- Формулировка ответа -->
+                        {{ answer.text }}
+                    </div>
+                    <!-- Чекбокс на коррект -->
+                    <div class="form-check form-check-inline mt-3">
+                        <input class="form-check-input" type="checkbox" id="inlineCheckbox{{ answer.id }}" value="option{{ answer.id }}">
+                        <label class="form-check-label" for="inlineCheckbox{{ answer.id }}">Correct!</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </span>
+</li>

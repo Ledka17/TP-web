@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<div class="row mb-2">
+    <a class="nav-link disabled ml-3" href="#" tabindex="-1" aria-disabled="true"><h4><p class="font-weight-light"> Tag:</p></h4></a>
+    <a class="nav-link ml-3" href="{% url 'tag' qtag=qtag %}" tabindex="-1"><h4><p class="font-weight-light">{{ qtag }}</p></h4></a>
+</div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="col-8">
+        {% if questions %}
+            <ul class="list-unstyled">
+                {% for question in objects_list %}
+                    {% include 'inc/one_quest.html' %}
+                    <br>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>There are no questions with tag "{{ qtag }}".</p>
+        {% endif %}
+        {% include 'pagination.html' %}
+    </div>
+{% endblock %}

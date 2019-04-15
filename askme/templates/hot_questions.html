@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+    <ul class="nav mb-4">
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><h4><p class="font-weight-light">Hot questions </p></h4></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="{% url 'questions' %}">New questions</a>
+          </li>
+      </ul>
+{% endblock %}
+
+
+{% block content %}
+<div class="col-8">
+    {% if questions %}
+        <ul class="list-unstyled">
+            {% for question in objects_list %}
+                {% include 'inc/one_quest.html' %}
+                <br>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no questions.</p>
+    {% endif %}
+    {% include 'pagination.html' %}
+</div>
+{% endblock %}

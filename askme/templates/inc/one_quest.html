@@ -1,0 +1,41 @@
+
+{% load static %}
+
+<li class="media">
+    <div class="col-2">
+        <!-- Аватар вопроса -->
+        <div class="row mb-2">
+            <img class="mx-auto" src="{% static 'images/media1.png' %}" height=86px class="mr-3">
+        </div>
+
+        <!-- Кнопки лайков/дизлайков -->
+        <div class="row mb-3">
+            <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+                <span class="border border-secondary rounded-left">&nbsp;&nbsp;{{ question.rating }}&nbsp;&nbsp;</span>
+                <button type="button" class="btn btn-secondary btn-sm">&#8593;</button>
+                <button type="button" class="btn btn-secondary btn-sm">&#8595;</button>
+            </div>
+        </div>
+
+    </div>
+    <div class="col">
+        <div class="media-body">
+            <!-- Вопрос -->
+            <h5 class="mt-0 mb-1"><a href="{% url 'question' qid=question.id %}" class="alert-link">{{ question.title }}</a></h5>
+
+            <!-- Формулировка вопроса -->
+            {{ question.text }}
+
+            <!-- Ответы -->
+            <div class="row">
+                <a class="nav-link active" href="{% url 'question' qid=question.id %}">answer ({{ question.answers }})</a>&nbsp;&nbsp;
+
+              <!-- Теги -->
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Tags: </a>
+                {% for tag in question.tags %}
+                    <a href="{% url 'tag' qtag=tag %}" class="card-link pt-2"> {{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</li>

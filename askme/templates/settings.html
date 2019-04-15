@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+<!-- Настройки -->
+<div class="row mb-2">
+    <a class="nav-link disabled ml-3" href="#" tabindex="-1" aria-disabled="true"><h4><p class="font-weight-light"> Settings:</p></h4></a>
+    <a class="nav-link ml-3" href="#" tabindex="-1"><h4><p class="font-weight-light">{{ name }}</p></h4></a>
+</div>
+{% endblock %}
+
+{% block content %}
+<!-- Медиа контент -->
+    <div class="col ml-2">
+        <form>
+            <!-- Логин -->
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Login</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Login">
+                </div>
+            </div>
+            <!-- Email -->
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                </div>
+            </div>
+            <!-- Пароль -->
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                </div>
+            </div>
+            <!-- Никнейм -->
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Nickname</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Nickname">
+                </div>
+            </div>
+            <!-- Выбор Фото -->
+            <div class="form-group row">
+                <div class="input-group mb-3">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">Upload avatar</label>
+                    <div class="col-sm-8">
+                        <img src="{% static 'images/avatar.jpg' %}" height=180px class="mr-3 mb-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Кнопка сохранить -->
+            <div class="form-group row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

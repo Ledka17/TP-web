@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Контент -->
+    <div class="container mt-4">
+      <!-- Медиа контент -->
+      <div class="row">
+        <div class="col-8">
+
+          <!-- Главный вопрос -->
+          <ul class="list-unstyled">
+            <li class="media">
+              <div class="col-2">
+                <!-- Аватар вопроса -->
+                <div class="row mb-3">
+                  <img class="mx-auto" src="{% static 'images/media1.png' %}" height=118px class="mr-2">
+                </div>
+
+                <!-- Кнопки лайков/дизлайков -->
+                <div class="row mb-3">
+                  <div class="btn-group mx-auto" role="group" aria-label="Basic example">
+                      <span class="border border-secondary rounded-left">&nbsp;&nbsp;{{ question.rating }}&nbsp;&nbsp;</span>
+                      <button type="button" class="btn btn-secondary btn-sm">&#8593;</button>
+                      <button type="button" class="btn btn-secondary btn-sm">&#8595;</button>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col">
+                <div class="media-body">
+                  <!-- Вопрос -->
+                  <h4 class="mt-0 mb-1"><a href="{% url 'question' qid=question.id %}" class="alert-link">{{ question.title }}</a></h4>
+
+                  <!-- Формулировка вопроса -->
+                  {{ question.text }}
+                  
+                  <!-- Теги -->
+                  <div class="row mt-2">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Tags: </a>
+                    {% for tag in question.tags %}
+                      <a href="{% url 'tag' qtag=tag %}" class="card-link pt-2"> {{ tag }}</a>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </li>
+            <hr height="5px">
+
+            <!-- Ответы на главный вопрос -->
+            {% if answers %}
+              {% for answer in objects_list %}
+                {% include 'inc/one_answer.html' %}
+              {% endfor %}
+            {% else %}
+              <p>There are no answers.</p>
+            {% endif %}
+            {% include 'pagination.html' %}
+          </ul>
+
+          <hr><br>
+          <!-- Задать вопрос самому -->
+          <form>
+            <div class="form-group">
+              <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Enter your answer here" rows="3"></textarea>
+            </div>
+            <!-- Кнопка спросить -->
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <button type="submit" class="btn btn-success">Answer</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        {% endblock %}
